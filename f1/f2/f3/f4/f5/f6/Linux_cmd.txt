@@ -1,0 +1,120 @@
+1. 1. Create path ~/f1/f2/f3/f4/f5/f6; Create and fill in text file in f1 folder; Copy it to f6 folder; Navigate to Home folder; Find copied file and remove it
+
+ubuntu@Katrin-pc:~$
+$ mkdir -p f1/f2/f3/f4/f5/f6
+
+ubuntu@Katrin-pc:~$ cd f1
+
+ubuntu@Katrin-pc:~/f1$ touch new_file
+
+ubuntu@Katrin-pc:~/f1$ vim new_file
+
+ubuntu@Katrin-pc:~/f1$ cp new_file /home/ubuntu/f1/f2/f3/f4/f5/f6
+
+ubuntu@Katrin-pc:~/f1$ cd /home/ubuntu/f1/f2/f3/f4/f5/f6
+
+ubuntu@Katrin-pc:~/f1/f2/f3/f4/f5/f6$ ls
+new_file
+
+ubuntu@Katrin-pc:~/f1/f2/f3/f4/f5/f6$ cd ~
+    
+ubuntu@Katrin-pc:~$ find /home/ubuntu -iname new_file
+/home/ubuntu/f1/f2/f3/f4/f5/f6/new_file
+/home/ubuntu/f1/new_file
+
+ubuntu@Katrin-pc:~$ ~
+$ cd /d/f1/f2/f3/f4/f5/f6
+
+ubuntu@Katrin-pc:~$ cd /home/ubuntu/f1/f2/f3/f4/f5/f6
+
+ubuntu@Katrin-pc:~/f1/f2/f3/f4/f5/f6$ rm new_file
+
+ubuntu@Katrin-pc:~/f1/f2/f3/f4/f5/f6$ ls
+
+ubuntu@Katrin-pc:~/f1/f2/f3/f4/f5/f6$
+
+
+
+2. Redirect errors only output into separate file
+
+ubuntu@Katrin-pc:~/f1$ ls f2 f6
+ls: cannot access 'f6': No such file or directory
+f2:
+f3
+
+ubuntu@Katrin-pc:~/f1$ ls f2 f6 >test_log
+ls: cannot access 'f6': No such file or directory
+
+ubuntu@Katrin-pc:~/f1$
+
+ubuntu@Katrin-pc:~/f1$ cat test_log
+f2:
+f3
+
+
+3. Redirect error and standart outputs into separate file
+
+ubuntu@Katrin-pc:~/f1$ ls f2 f6 >test_log 2>&1
+
+ubuntu@Katrin-pc:~/f1$ cat test_log
+ls: cannot access 'f6': No such file or directory
+f2:
+f3
+
+4. Create file, change owner to root. Add permissions to execute file
+
+ubuntu@Katrin-pc:~/f1/f2$ touch permission_file
+
+ubuntu@Katrin-pc:~/f1/f2$ ls -l
+total 0
+drwxr-xr-x 1 ubuntu ubuntu 512 Nov  1 17:47 f3
+-rw-r--r-- 1 ubuntu ubuntu   0 Nov  1 18:25 permission_file
+
+ubuntu@Katrin-pc:~/f1/f2$ sudo useradd katrin
+
+ubuntu@Katrin-pc:~/f1/f2$ sudo chown katrin permission_file
+
+ubuntu@Katrin-pc:~/f1/f2$ ls -l
+total 0
+drwxr-xr-x 1 ubuntu ubuntu 512 Nov  1 17:47 f3
+-rw-r--r-- 1 katrin ubuntu   0 Nov  1 18:25 permission_file
+
+ubuntu@Katrin-pc:~/f1/f2$ sudo chmod +x permission_file
+
+ubuntu@Katrin-pc:~/f1/f2$ rm permission_file
+rm: remove write-protected regular empty file 'permission_file'?
+
+ubuntu@Katrin-pc:~/f1/f2$ ls
+f3  permission_file (green color)
+
+5. make cmd2 executes only if cmd1 fails
+ubuntu@Katrin-pc:~/f1/f2$ grep -rw frunc_name || echo "This name is missing"
+This name is missing
+
+6. make cmd2 executes only if cmd1 successful
+ubuntu@Katrin-pc:~/f1/f2$ mv pms_file pms1_file && cp pms1_file /home/ubuntu/f1/f2/f3
+
+ubuntu@Katrin-pc:~/f1/f2$ ls
+f3  pms1_file
+
+ubuntu@Katrin-pc:~/f1/f2$ cd f3
+
+ubuntu@Katrin-pc:~/f1/f2/f3$ ls
+f4  pms1_file
+
+7. Create and execute sh file that prints current folder. NOTE: Do not use any text redactor
+ubuntu@Katrin-pc:~/f1/f2/f3/f4$ touch script.sh
+
+1)ubuntu@Katrin-pc:~/f1/f2/f3/f4$ echo printf "Hello" >script.sh  
+2)ubuntu@Katrin-pc:~/f1/f2/f3/f4$ nano script.sh
+printf "%s\n" "Hello world"
+
+ubuntu@Katrin-pc:~/f1/f2/f3/f4$ chmod +x script.sh
+
+ubuntu@Katrin-pc:~/f1/f2/f3/f4$ ls -l
+total 0
+drwxr-xr-x 1 ubuntu ubuntu 512 Nov  1 17:47 f5
+-rwxr-xr-x 1 ubuntu ubuntu  29 Nov  1 19:48 script.sh
+
+ubuntu@Katrin-pc:~/f1/f2/f3/f4$ ./script.sh
+Hello world
