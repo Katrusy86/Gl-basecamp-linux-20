@@ -43,7 +43,7 @@ $ git checkout main
 
 
 katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (main)
-$ git merge hotfix
+$ git merge git-branch
 CONFLICT (add/add): Merge conflict in merge_file
 Auto-merging merge_file
 Automatic merge failed; fix conflicts and then commit the result.
