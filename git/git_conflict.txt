@@ -1,0 +1,74 @@
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020
+$ cd GL-basecamp/
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (main)
+$ git branch git-branch
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (main)
+$ touch merge_file
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (main)
+$ vim merge_file
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (main)
+$ git add .
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (main)
+$ git commit -m "Added and changed file "
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (main)
+$ git status
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (main)
+$ git checkout git-branch
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (git-branch)
+$ vim merge_file
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (git-branch)
+$  git add .
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (git-branch)
+$ git commit -m "Added changing"
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (git-branch)
+$ git log --oneline --decorate --graph --all
+* 932075f (HEAD -> git-branch) Added changing
+| * f8e2317 (main) Added and changed file
+|/
+* eae3c26 (origin/main, origin/HEAD) Initial commit
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (git-branch)
+$ git checkout main
+
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (main)
+$ git merge hotfix
+CONFLICT (add/add): Merge conflict in merge_file
+Auto-merging merge_file
+Automatic merge failed; fix conflicts and then commit the result.
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (main|MERGING)
+$ vim merge_file
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (main|MERGING)
+$ git add .
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (main|MERGING)
+$ git commit -m "merged git-branch in main branch and resolve conflict"
+[main 342395d] merged git-branch in main branch and resolve conflict
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (main)
+$ git push
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (main)
+$ git checkout git-branch
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (git-branch)
+$ git add .
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (git-branch)
+$ git commit -m "Added a new hw_file for checking it"
+
+katri@Katrin-pc MINGW64 /d/gl-base-camp-2020/GL-basecamp (git-branch)
+$ git push --set-upstream origin git-branch
